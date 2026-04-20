@@ -744,6 +744,9 @@
     .footer-bg-shapes{
       display: none;
     }
+    nav{
+      border: none;
+    }
     footer{
       min-height: auto;
       padding: 40px 24px 32px;
@@ -753,23 +756,31 @@
     }
     .mobile-nav-footer{
       display: flex;
+      flex-direction: column;
+      gap: 16px;
       margin-bottom: 24px;
+      width: 100%;
+      height: auto;
+      padding-bottom: 10px;
     }
-    .footer-nav {
-      flex-direction: row;
-      gap: 14px;
-      margin-bottom: 28px;
-      min-height: auto;
-      border: none;
-      justify-content: center;
+    .mobile-nav-footer .footer-nav {
+      flex-direction: column;
+      gap: 16px;
+      margin-bottom: 0;
+      height: auto;
+      width: 100%;
     }
     .list-nav-footer {
       display: flex;
-      flex-direction: row;
-      gap: auto;
       flex-wrap: wrap;
-      align-items: center;
-      justify-content: space-between;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+    }
+    .list-nav-footer a {
+      flex: 1 1 auto;
+      min-width: fit-content;
+      text-align: center;
     }
     .footer-logo {
       order: -1;
