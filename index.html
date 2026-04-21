@@ -41,13 +41,14 @@ body {
   background: var(--black);
   color: var(--white);
   border: none;
-  padding: 10px 22px;
+  padding: 15px 40px;
   font-family: var(--font-sans);
-  font-size: 13px;
+  font-size: 20px;
   font-weight: 500;
   cursor: pointer;
   transition: opacity .2s;
   letter-spacing: .01em;
+  margin-top: 20px;
 }
 .btn-black:hover { opacity: .75; }
 
@@ -56,24 +57,41 @@ body {
   border: 1px solid #999;
   background: transparent;
   color: var(--black);
-  padding: 8px 22px;
+  padding: 15px 40px;
   font-family: var(--font-sans);
   font-size: 20px;
   cursor: pointer;
   transition: background .2s, color .2s;
 }
 .btn-outline:hover { background: var(--black); color: var(--white); }
+.btn-black-nav {
+  display: inline-block;
+  background: var(--black);
+  color: var(--white);
+  border: none;
+  padding: 10px 20px;
+  font-family: var(--font-sans);
+  font-size: 20px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: opacity .2s;
+  letter-spacing: .01em;
+}
+.btn-black-nav:hover { opacity: .75; }
 
 /* ════════════════════════════════════════════
    NAVBAR
 ════════════════════════════════════════════ */
+
 .navbar {
   background: var(--white);
   border-bottom: 1px solid var(--gray-border);
   position: sticky;
   top: 0;
-  z-index: 9999;
-  height: 50px;
+  z-index: 10003;
+  height: auto;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 .navbar .wrap {
@@ -117,6 +135,7 @@ body {
   padding: 5px;
   z-index: 10002;
   position: relative;
+  isolation: isolate;
 }
 
 .nav-hamburger span {
@@ -129,11 +148,9 @@ body {
 .nav-hamburger.active span:nth-child(1) {
   transform: rotate(45deg) translate(5px, 5px);
 }
-
 .nav-hamburger.active span:nth-child(2) {
   opacity: 0;
 }
-
 .nav-hamburger.active span:nth-child(3) {
   transform: rotate(-45deg) translate(6px, -6px);
 }
@@ -161,7 +178,7 @@ body {
 }
 
 .nav-mobile-menu a {
-  font-size: 24px;
+  font-size: 18px;
   color: var(--black);
   text-decoration: none;
   font-weight: 500;
@@ -173,8 +190,7 @@ body {
 }
 
 /* ════════════════════════════════════════════
-   HERO
-   Left: text ~45% | Right: browser frame + shapes img underneath
+   HERO — DESKTOP
 ════════════════════════════════════════════ */
 .hero {
   background: var(--gray-bg);
@@ -190,8 +206,7 @@ body {
   height: 100%;
 }
 
-/* Left */
-.hero-left{
+.hero-left {
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -199,6 +214,7 @@ body {
   align-items: start;
   gap: 10px;
 }
+
 .hero-left h1 {
   font-family: var(--font-serif);
   font-size: 60px;
@@ -215,10 +231,9 @@ body {
   max-width: 80%;
 }
 
-/* Right: browser frame */
 .hero-right {
   position: relative;
-  height: 100%; 
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -250,15 +265,7 @@ body {
   display: block;
 }
 
-/*
-  ═══════════════════════════════════════════
-  HERO SHAPES IMAGE PLACEHOLDER
-  Position: absolute, bawah-kanan frame, overflow ke kanan layar.
-  Ganti <div> ini dengan:
-    <img src="hero-shapes.png" alt="" class="hero-shapes-img" />
-  ═══════════════════════════════════════════
-*/
-.hero-shapes-placeholder,
+/* Hero shapes image — desktop only */
 .hero-shapes-img {
   position: absolute;
   bottom: 0;
@@ -267,28 +274,12 @@ body {
   top: 200px;
   pointer-events: none;
   z-index: 10;
-}
-
-.hero-shapes-placeholder {
-  border: 1.5px dashed #bbb;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.hero-shapes-placeholder::after {
-  content: 'hero-shapes.png';
-  font-size: 10px;
-  color: #bbb;
-  font-family: monospace;
-}
-
-.hero-shapes-img {
   object-fit: contain;
   object-position: bottom right;
 }
 
 /* ════════════════════════════════════════════
-   DARK PUBLICATION SECTION
+   DARK PUBLICATION
 ════════════════════════════════════════════ */
 .dark-pub {
   background: var(--black);
@@ -302,7 +293,6 @@ body {
   justify-content: center;
 }
 
-/* Large circle outline top-right */
 .dark-pub-circle {
   position: absolute;
   top: -30px;
@@ -335,7 +325,6 @@ body {
   margin-bottom: 36px;
 }
 
-/* 5 small white cards row */
 .dark-cards-row {
   padding-top: 40px;
   display: flex;
@@ -351,20 +340,13 @@ body {
   flex-shrink: 0;
 }
 
-/* dot at end of row */
-.dark-cards-dot {
-  width: 16px;
-  height: 16px;
-  border-radius: 50%;
-  background: #444;
-  flex-shrink: 0;
-  margin-left: 8px;
+/* ════════════════════════════════════════════
+   FEATURE BENEFIT — DESKTOP
+════════════════════════════════════════════ */
+.bg-feature {
+  position: relative;
 }
 
-/* ════════════════════════════════════════════
-   FEATURE BENEFIT SECTION
-   Left: text ~40% | Right: shapes placeholder (absolute, bottom)
-════════════════════════════════════════════ */
 .feature-benefit {
   background: var(--gray-bg);
   padding: 50px 40px 50px;
@@ -380,7 +362,8 @@ body {
   position: relative;
   height: 100%;
 }
-.feature-benefit-text{
+
+.feature-benefit-text {
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -427,7 +410,6 @@ body {
   flex-shrink: 0;
 }
 
-/* Shapes column — dot above + placeholder below */
 .feature-shapes-col {
   display: flex;
   flex-direction: column;
@@ -435,40 +417,17 @@ body {
   position: relative;
 }
 
-/*
-  ═══════════════════════════════════════════
-  FEATURE SHAPES IMAGE PLACEHOLDER
-  Ganti <div> ini dengan:
-    <img src="feature-shapes.png" alt="" class="feature-shapes-img" />
-  ═══════════════════════════════════════════
-*/
-.bg-feature{
-  position: relative;
-}
+/* Feature shapes — desktop only */
 .feature-shapes-img {
   position: absolute;
   top: 50px;
   right: 100px;
   width: 30%;
-}
-
-.feature-shapes-placeholder {
-  border: 1.5px dashed #bbb;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.feature-shapes-placeholder::after {
-  content: 'feature-shapes.png';
-  font-size: 10px;
-  color: #bbb;
-  font-family: monospace;
+  pointer-events: none;
 }
 
 /* ════════════════════════════════════════════
-   SPLIT CTA  (black left | text right)
-   Persis wireframe: kotak hitam full-height kiri,
-   kotak putih portrait di dalamnya, teks kanan
+   SPLIT CTA — DESKTOP
 ════════════════════════════════════════════ */
 .split-cta {
   display: grid;
@@ -483,7 +442,6 @@ body {
   justify-content: center;
 }
 
-/* Kotak putih portrait — sesuai wireframe */
 .split-cta-inner-box {
   width: 50%;
   aspect-ratio: 6/7;
@@ -516,7 +474,6 @@ body {
 
 /* ════════════════════════════════════════════
    VALUE PROP + AUTHOR
-   Left text | Right: black box (with white padding on section)
 ════════════════════════════════════════════ */
 .value-prop {
   background: var(--gray-bg);
@@ -577,7 +534,6 @@ body {
   color: #555;
 }
 
-/* Black box right — NOT full section height, floats with padding */
 .value-prop-box-wrap {
   position: relative;
 }
@@ -587,7 +543,6 @@ body {
   width: 100%;
   aspect-ratio: 4/3;
 }
-
 
 /* ════════════════════════════════════════════
    DARK TESTIMONIAL
@@ -647,7 +602,6 @@ body {
   max-width: 70%;
   margin: 0 auto 48px;
   line-height: 1.7;
-
 }
 
 .blog-grid {
@@ -677,15 +631,10 @@ body {
   color: #555;
   text-decoration: none;
 }
-.blog-card-link::after { content: ''; }
 .blog-card-link:hover { color: var(--black); }
 
 /* ════════════════════════════════════════════
    FOOTER
-   Left-aligned layout:
-   Col1: TRADE logo
-   Col2: Latest blog post
-   Col3+4: Product / Company links
 ════════════════════════════════════════════ */
 footer {
   background: var(--black);
@@ -706,16 +655,15 @@ footer {
   align-items: flex-start;
 }
 
-/* Col 1 */
 .footer-logo {
   font-weight: 700;
   font-size: 24px;
   letter-spacing: .1em;
   text-transform: uppercase;
   color: var(--white);
-  
 }
-.logo-text{
+
+.logo-text {
   width: 50%;
   display: flex;
   flex-direction: row;
@@ -723,12 +671,12 @@ footer {
   gap: 40px;
 }
 
-/* Col 2 */
-.col-2-footer{
+.col-2-footer {
   display: flex;
   gap: 10px;
   flex-direction: column;
 }
+
 .footer-blog-label {
   font-size: 14px;
   color: #fff;
@@ -751,18 +699,20 @@ footer {
   line-height: 1.7;
   max-width: 380px;
 }
-.link-text{
+
+.link-text {
   padding-left: 60px;
   border-left: 2px solid #fff;
 }
-.list-link{
+
+.list-link {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   gap: 100px;
   margin-bottom: 40px;
 }
-/* Col 3 & 4 */
+
 .footer-links-col h5 {
   font-size: 14px;
   font-weight: 600;
@@ -800,58 +750,229 @@ footer {
 .footer-bottom a { color: #fff; text-decoration: none; }
 .footer-bottom a:hover { color: #fff; }
 
-/* ════════════════════════════════════════════
-   RESPONSIVE
-════════════════════════════════════════════ */
-@media (max-width: 960px) {
-  .wrap { padding: 0 32px; }
 
-  /* Navbar Responsive */
-  .navbar .wrap { padding: 0 32px; }
+/* ════════════════════════════════════════════
+   RESPONSIVE — TABLET  (max 1024px)
+════════════════════════════════════════════ */
+@media (max-width: 1024px) {
+
+  /* ── Wrap ── */
+  .wrap { padding: 0 36px; }
+  .navbar .wrap { padding: 0 36px; }
+
+  /* ── Navbar ── */
   .nav-links { display: none; }
   .nav-logo { position: relative; left: 0; transform: none; }
   .navbar .btn-black { display: none; }
   .nav-hamburger { display: flex; }
 
+  /* ── Images: hidden on tablet & below ── */
+  .hero-shapes-img  { display: none; }
+  .feature-shapes-img { display: none; }
+
+  /* ── HERO ── */
+  .hero {
+    height: auto;
+    padding: 60px 0 56px;
+  }
   .hero .wrap {
     grid-template-columns: 1fr;
+    gap: 40px;
+    height: auto;
   }
-  .hero-right { padding-bottom: 180px; }
-  .hero-shapes-placeholder, .hero-shapes-img {
-    right: 0;
+  .hero-left {
+    height: auto;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  .hero-left h1 {
+    font-size: 48px;
+    padding-bottom: 8px;
+  }
+  .hero-left p {
+    font-size: 17px;
+    max-width: 100%;
+  }
+  .hero-right {
+    height: auto;
+    justify-content: flex-start;
+  }
+  .hero-frame {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16/9;
   }
 
+  /* ── DARK PUB ── */
+  .dark-pub {
+    height: auto;
+    padding: 64px 0;
+  }
+  .dark-pub-eyebrow { font-size: 18px; }
+  .dark-pub-body {
+    font-size: 16px;
+    max-width: 80%;
+  }
+  .dark-cards-row { padding-top: 28px; flex-wrap: wrap; gap: 12px; justify-content: center; }
+  .dark-card-item { width: 90px; height: 36px; }
+
+  /* ── FEATURE BENEFIT ── */
+  .feature-benefit {
+    height: auto;
+    padding: 60px 0 56px;
+  }
   .feature-benefit .wrap {
     grid-template-columns: 1fr;
-    padding-bottom: 360px;
+    height: auto;
+    gap: 0;
   }
+  .feature-benefit-text {
+    height: auto;
+    padding-left: 0;
+    gap: 16px;
+  }
+  .feature-benefit-text .label { font-size: 20px; }
+  .feature-benefit-text p { font-size: 16px; }
+  .benefit-list li { font-size: 16px; }
+  /* hide the empty shape col on tablet */
+  .feature-shapes-col { display: none; }
 
-  .split-cta { grid-template-columns: 1fr; }
-  .split-cta-left { min-height: 280px; }
-  .split-cta-right { padding: 44px 32px; }
+  /* ── SPLIT CTA ── */
+  .split-cta {
+    grid-template-columns: 1fr;
+    height: auto;
+  }
+  .split-cta-left {
+    min-height: 260px;
+    padding: 40px 0;
+  }
+  .split-cta-inner-box {
+    width: 40%;
+  }
+  .split-cta-right {
+    padding: 48px 36px;
+  }
+  .split-cta-right h3 { font-size: 20px; }
+  .split-cta-right p { font-size: 16px; max-width: 100%; }
+  .btn-outline { font-size: 16px; }
 
-  .value-prop .wrap { grid-template-columns: 1fr; gap: 36px; }
-  .value-prop-box-inner { display: none; }
+  /* ── VALUE PROP ── */
+  .value-prop {
+    height: auto;
+    padding: 64px 0;
+  }
+  .value-prop .wrap {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+  .value-prop-text h2 { font-size: 26px; }
+  .value-prop-text .body-main { font-size: 16px; max-width: 100%; }
+  .value-prop-text .body-muted { max-width: 100%; }
+  .value-prop-box-wrap { max-width: 60%; }
 
-  .blog-grid { grid-template-columns: 1fr 1fr; }
+  /* ── DARK TESTIMONIAL ── */
+  .dark-testimonial {
+    height: auto;
+    padding: 64px 0;
+  }
+  .dark-testimonial blockquote { font-size: 18px; }
 
-  .footer-top { grid-template-columns: 1fr 1fr; }
-  footer { padding: 40px 32px 0; }
+  /* ── BLOG ── */
+  .blog-section h2 { font-size: 20px; }
+  .blog-section .subtitle { font-size: 15px; max-width: 90%; }
+  .blog-grid { grid-template-columns: 1fr 1fr; gap: 20px; }
+  .blog-card-title { font-size: 15px; }
 
-  /* Hide bg images below desktop */
-  .hero-shapes-img { display: none; }
-  .feature-shapes-img { display: none; }
+  /* ── FOOTER ── */
+  footer {
+    height: auto;
+    padding: 56px 36px 40px;
+  }
+  .footer-top {
+    min-width: 100%;
+    flex-direction: column;
+    gap: 40px;
+  }
+  .logo-text {
+    width: 100%;
+    flex-direction: column;
+    gap: 24px;
+  }
+  .link-text {
+    padding-left: 0;
+    border-left: none;
+    border-top: 1px solid #333;
+    padding-top: 32px;
+  }
+  .list-link { gap: 48px; }
+  .footer-blog-title { font-size: 16px; }
+  .footer-blog-excerpt { max-width: 100%; }
 }
 
+
+/* ════════════════════════════════════════════
+   RESPONSIVE — MOBILE  (max 640px)
+════════════════════════════════════════════ */
 @media (max-width: 640px) {
+
+  /* ── Wrap ── */
   .wrap { padding: 0 20px; }
   .navbar .wrap { padding: 0 20px; }
-  .nav-links { gap: 16px; }
-  .hero-left h1 { font-size: 30px; }
-  .blog-grid { grid-template-columns: 1fr; }
-  .footer-top { grid-template-columns: 1fr; }
-  .dark-card-item { width: 60px; height: 36px; }
-  footer { padding: 32px 20px 0; }
+
+  /* ── HERO ── */
+  .hero { padding: 48px 0 40px; }
+  .hero-left h1 { font-size: 32px; padding-bottom: 6px; }
+  .hero-left p { font-size: 15px; }
+
+  /* ── DARK PUB ── */
+  .dark-pub-eyebrow { font-size: 15px; }
+  .dark-pub-body { font-size: 14px; max-width: 95%; }
+  .dark-card-item { width: 56px; height: 30px; }
+  .dark-cards-row { gap: 8px; }
+
+  /* ── FEATURE BENEFIT ── */
+  .feature-benefit { padding: 48px 0 40px; }
+  .feature-benefit-text .label { font-size: 18px; }
+  .feature-benefit-text p { font-size: 15px; }
+  .benefit-list li { font-size: 15px; }
+
+  /* ── SPLIT CTA ── */
+  .split-cta-left { min-height: 200px; }
+  .split-cta-right { padding: 36px 20px; }
+  .split-cta-right h3 { font-size: 18px; }
+  .split-cta-right p { font-size: 15px; }
+  .btn-outline { font-size: 14px; padding: 8px 18px; }
+
+  /* ── VALUE PROP ── */
+  .value-prop { padding: 52px 0; }
+  .value-prop-text h2 { font-size: 22px; }
+  .value-prop-text .body-main { font-size: 15px; margin-bottom: 24px; }
+  .value-prop-box-wrap { max-width: 100%; }
+
+  /* ── DARK TESTIMONIAL ── */
+  .dark-testimonial { padding: 52px 0; }
+  .dark-testimonial blockquote { font-size: 16px; }
+  .dark-testimonial .author-label { font-size: 12px; }
+
+  /* ── BLOG ── */
+  .blog-section { padding: 52px 0 60px; }
+  .blog-section h2 { font-size: 18px; }
+  .blog-section .subtitle { font-size: 14px; max-width: 100%; margin-bottom: 32px; }
+  .blog-grid { grid-template-columns: 1fr; gap: 32px; }
+  .blog-card-title { font-size: 15px; }
+
+  /* ── FOOTER ── */
+  footer { padding: 48px 20px 36px; }
+  .footer-top { width: 100%; }
+  .logo-text { width: 100%; }
+  .link-text { width: 100%; padding-left: 0; }
+  .footer-logo { font-size: 18px; text-align: center; }
+  .list-link { flex-direction: column; gap: 32px; margin-bottom: 32px; width: 100%; }
+  .footer-links-col { text-align: center; width: 100%; }
+  .footer-blog-label{ text-align: center; }
+  .footer-blog-title { font-size: 15px; text-align: center; }
+  .footer-blog-excerpt { text-align: center; }
+  .footer-bottom { flex-wrap: wrap; justify-content: center; gap: 6px; }
 }
 </style>
 </head>
@@ -867,13 +988,10 @@ footer {
       <li><a href="#">Link 4</a></li>
     </ul>
     <div class="nav-logo">Lorem</div>
-    <button class="btn-black">Lorem</button>
+    <button class="btn-black-nav">Lorem</button>
 
-    <!-- Hamburger Button -->
     <div class="nav-hamburger" onclick="toggleMenu()">
-      <span></span>
-      <span></span>
-      <span></span>
+      <span></span><span></span><span></span>
     </div>
   </nav>
 </header>
@@ -889,106 +1007,81 @@ footer {
 
 
 <!-- ══ HERO ════════════════════════════════════════════════════════ -->
- <div class="bg">
-    <section class="hero">
-     <div class="wrap">
-   
-       <!-- Left: headline + CTA -->
-       <div class="hero-left">
-         <h1>Your Best Value<br>Proposition</h1>
-         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-         <button class="btn-black">Start free trial</button>
-       </div>
-   
-       <!-- Right: browser frame, shapes absolute below -->
-       <div class="hero-right">
-         <div class="hero-frame">
-           <div class="hero-frame-dots">
-             <span></span><span></span><span></span>
-           </div>
-         </div>
-   
-         <!--
-           HERO SHAPES PLACEHOLDER — absolute, bawah frame, overflow kanan.
-           Ganti dengan: <img src="hero-shapes.png" alt="" class="hero-shapes-img" />
-         -->
-       </div>
-       
-     </div>
-    </section>
-    <img src="bg-hero.png" alt="" class="hero-shapes-img" />
+<div class="bg">
+  <section class="hero">
+    <div class="wrap">
 
-    <section class="dark-pub">
-     <!-- circle deco top-right -->
-     <div class="dark-pub-circle" aria-hidden="true"></div>
-   
-     <div class="wrap">
-       <h5 class="dark-pub-eyebrow">The Publication</h5>
-       <p class="dark-pub-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-   
-       <!-- 5 small white cards + dot -->
-       <div class="dark-cards-row">
-         <div class="dark-card-item"></div>
-         <div class="dark-card-item"></div>
-         <div class="dark-card-item"></div>
-         <div class="dark-card-item"></div>
-         <div class="dark-card-item"></div>
-       </div>
-     </div>
-    </section>
- </div>
+      <div class="hero-left">
+        <h1>Your Best Value<br>Proposition</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        <button class="btn-black">Start free trial</button>
+      </div>
+
+      <div class="hero-right">
+        <div class="hero-frame">
+          <div class="hero-frame-dots">
+            <span></span><span></span><span></span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+  <!-- Desktop only image -->
+  <img src="bg-hero.png" alt="" class="hero-shapes-img" />
+
+  <!-- ══ DARK PUBLICATION ══════════════════════════════════════════ -->
+  <section class="dark-pub">
+    <div class="dark-pub-circle" aria-hidden="true"></div>
+    <div class="wrap">
+      <h5 class="dark-pub-eyebrow">The Publication</h5>
+      <p class="dark-pub-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+      <div class="dark-cards-row">
+        <div class="dark-card-item"></div>
+        <div class="dark-card-item"></div>
+        <div class="dark-card-item"></div>
+        <div class="dark-card-item"></div>
+        <div class="dark-card-item"></div>
+      </div>
+    </div>
+  </section>
+</div>
 
 
-<!-- ══ DARK PUBLICATION ════════════════════════════════════════════ -->
+<!-- ══ FEATURE BENEFIT + SPLIT CTA ══════════════════════════════════ -->
+<div class="bg-feature">
+  <section class="feature-benefit">
+    <div class="wrap">
 
+      <div class="feature-benefit-text">
+        <p class="label">Feature that is amazing</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        <ul class="benefit-list">
+          <li>Benefit of Feature</li>
+          <li>Benefit of Feature</li>
+          <li>Benefit of Feature</li>
+        </ul>
+      </div>
 
-<!-- ══ FEATURE BENEFIT ════════════════════════════════════════════ -->
- <div class="bg-feature">
-    <section class="feature-benefit">
-     <div class="wrap">
-   
-       <!-- Left: label + text + bullets -->
-       <div class="feature-benefit-text">
-         <p class="label">Feature that is amazing</p>
-         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-         <ul class="benefit-list">
-           <li>Benefit of Feature</li>
-           <li>Benefit of Feature</li>
-           <li>Benefit of Feature</li>
-         </ul>
-       </div>
-   
-       <!-- Right: dot + shapes placeholder -->
-       <div class="feature-shapes-col">
-         <!--
-           FEATURE SHAPES PLACEHOLDER
-           Ganti dengan: <img src="feature-shapes.png" alt="" class="feature-shapes-img" />
-         -->
-         
-       </div>
-   
-     </div>
-    </section>
-    <img src="bg-footer.png" alt="" class="feature-shapes-img" />
-    <!-- ══ SPLIT CTA  (black | text) ══════════════════════════════════ -->
-    <section class="split-cta">
-   
-     <!-- Black left: kotak putih portrait di tengah -->
-     <div class="split-cta-left" aria-hidden="true">
-       <div class="split-cta-inner-box"></div>
-     </div>
-   
-     <!-- Right: text + CTA -->
-     <div class="split-cta-right">
-       <div class="split-cta-dot" aria-hidden="true"></div>
-       <h3>Feature that is amazing</h3>
-       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-       <button class="btn-outline">Learn More</button>
-     </div>
-   
-    </section>
+      <div class="feature-shapes-col"></div>
 
- </div>
+    </div>
+  </section>
+  <!-- Desktop only image -->
+  <img src="bg-footer.png" alt="" class="feature-shapes-img" />
+
+  <!-- ══ SPLIT CTA ══════════════════════════════════════════════════ -->
+  <section class="split-cta">
+    <div class="split-cta-left" aria-hidden="true">
+      <div class="split-cta-inner-box"></div>
+    </div>
+    <div class="split-cta-right">
+      <h3>Feature that is amazing</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+      <button class="btn-outline">Learn More</button>
+    </div>
+  </section>
+</div>
 
 
 <!-- ══ VALUE PROP + AUTHOR ═════════════════════════════════════════ -->
@@ -1005,10 +1098,8 @@ footer {
       </div>
     </div>
 
-    <!-- Black box kanan dengan kotak putih nested -->
     <div class="value-prop-box-wrap">
       <div class="value-prop-box"></div>
-      <div class="value-prop-box-inner"></div>
     </div>
 
   </div>
@@ -1059,11 +1150,9 @@ footer {
   <div class="footer-top">
 
     <div class="logo-text">
-      <!-- Col 1: Logo -->
       <div>
         <div class="footer-logo">TRADE</div>
       </div>
-      <!-- Col 2: Latest blog -->
       <div class="col-2-footer">
         <p class="footer-blog-label">Latest Blog Post</p>
         <p class="footer-blog-title">Ready to get started?</p>
@@ -1073,7 +1162,6 @@ footer {
 
     <div class="link-text">
       <div class="list-link">
-        <!-- Col 3: Product links -->
         <div class="footer-links-col">
           <h5>Product</h5>
           <ul>
@@ -1084,8 +1172,6 @@ footer {
             <li><a href="#">Product</a></li>
           </ul>
         </div>
-    
-        <!-- Col 4: Company links -->
         <div class="footer-links-col">
           <h5>Company</h5>
           <ul>
@@ -1105,6 +1191,7 @@ footer {
         <a href="#">Terms</a>
       </div>
     </div>
+
   </div>
 </footer>
 
